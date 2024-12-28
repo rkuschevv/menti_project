@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from src.routers import deposit
+from src.app.routers import deposit
 
 app = FastAPI(
     title="Deposit Calculator API",

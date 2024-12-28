@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
-from src.services.deposit_calculator import calculate_deposit
+from src.app.services.deposit_calculator import calculate_deposit
 
 router = APIRouter(prefix="/deposit", tags=["Deposit"])
 
