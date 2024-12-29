@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import Dict
 import calendar
 
+
 def calculate_deposit(date: str, periods: int, amount: int, rate: float) -> Dict[str, float]:
     if date is None:
         start_date = datetime.now()
