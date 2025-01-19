@@ -4,22 +4,8 @@ import calendar
 
 
 def calculate_deposit(date: str, periods: int, amount: int, rate: float) -> Dict[str, float]:
-    if date is None:
-        start_date = datetime.now()
-    else:
-        try:
-            start_date = datetime.strptime(date, "%d.%m.%Y")
-        except ValueError:
-            raise ValueError("Invalid date format. Use dd.mm.YYYY.")
-
-    if not (1 <= periods <= 60):
-        raise ValueError("Periods must be between 1 and 60.")
-
-    if not (10000 <= amount <= 3000000):
-        raise ValueError("Amount must be between 10,000 and 3,000,000.")
-
-    if not (1 <= rate <= 8):
-        raise ValueError("Rate must be between 1 and 8.")
+    # Преобразуем дату из строки в объект datetime
+    start_date = datetime.strptime(date, "%d.%m.%Y")
 
     monthly_rate = rate / 100
     results = {}

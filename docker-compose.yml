@@ -1,26 +1,29 @@
-version: '3.11'
-
+version: "3.11"
 services:
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  db:
+    image: postgres:16
+    container_name: postgres
     environment:
-      - PYTHONUNBUFFERED=1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: db_menti_dep
+    ports:
+      - "5445:5445"
     volumes:
-      - .:/app
-    command: poetry run pytest --cov=src --cov-report=term-missing
+      - postgres_data:/var/lib/postgresql/data
 
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+    container_name: fastapi_app
     ports:
       - "8000:8000"
     environment:
-      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://postgres:postgres@localhost:5445/db_menti_dep
+    depends_on:
+      - db
     volumes:
       - .:/app
-    command: poetry run uvicorn src.app.main:app --host 0.0.0.0 --port 8000
 
-
+volumes:
+  postgres_data:
