@@ -1,0 +1,9 @@
+../venv
+.idea
+*__pycache__*
+pyproject.toml
+.coverage
+src/app/core/config.py
+*.env
+alembic/versions/*.pyc
+

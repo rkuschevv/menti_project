@@ -1,0 +1,1 @@
+CONFIG = "postgresql://postgres:postgres@localhost:5445/db_menti_dep"
